@@ -24,8 +24,8 @@ const ContactList = () => {
   );
 
   useEffect(() => {
-    setContactList(get("contacts"));
-  }, []);
+    dispatch(setContactList(get("contacts")));
+  }, [dispatch]);
 
   useEffect(() => {
     save("contacts", contactList);
