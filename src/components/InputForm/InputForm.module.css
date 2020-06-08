@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+}
+
+.inputField {
+  display: block;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #190095;
+  width: 400px;
+  height: 35px;
+}
+
+.btn {
+  width: 400px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  background-color: #190095;
+  color: aliceblue;
+  margin-bottom: 30px;
+}
+
+.btn:hover {
+  background-color: #000066;
+  cursor: pointer;
+}

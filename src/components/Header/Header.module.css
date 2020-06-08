@@ -1,0 +1,10 @@
+.headerBlock {
+  height: 90px;
+}
+
+.header {
+  font-family: sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #190095;
+}

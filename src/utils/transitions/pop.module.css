@@ -1,0 +1,16 @@
+.enter {
+  transform: scale(0);
+  height: 0;
+}
+
+.enterActive {
+  transform: scale(1);
+  height: auto;
+  transition: transform 250ms ease-in, height 250ms ease-in;
+}
+
+.exitActive {
+  transform: scale(0);
+  height: 0;
+  transition: transform 250ms ease-in, height 250ms ease-in;
+}
