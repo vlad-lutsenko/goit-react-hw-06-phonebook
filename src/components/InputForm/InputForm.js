@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { v4 as uuidv4 } from "uuid";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./InputForm.module.css";
-import { useSelector } from "react-redux";
-import { addContact } from "../../redux/actions/contatList";
+import { useSelector, useDispatch } from "react-redux";
+import { addContact } from "../../redux/actions/contactList";
 
 const InputForm = () => {
   const contacts = useSelector((state) => state.contacts);
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
 
@@ -31,7 +31,7 @@ const InputForm = () => {
       toast.configure();
       toast.error(`${name} is already in your contact list`);
     } else {
-      addContact({ id: uuidv4(), name: name, number: number });
+      dispatch(addContact({ id: uuidv4(), name: name, number: number }));
     }
   };
 
@@ -74,20 +74,6 @@ const InputForm = () => {
       </button>
     </form>
   );
-};
-
-InputForm.propTypes = {
-  contactList: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.exact({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-      })
-    ),
-    PropTypes.array,
-  ]).isRequired,
-  setContactList: PropTypes.func.isRequired,
 };
 
 export default InputForm;

@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import PropTypes from "prop-types";
 import popIn from "../../utils/transitions/pop.module.css";
 import slideIn from "../../utils/transitions/slide.module.css";
 import styles from "./ContactList.module.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { deleteContact, setContactList } from "../../redux/actions/contatList";
+import { deleteContact, setContactList } from "../../redux/actions/contactList";
+import { get, save } from "../../utils/storage";
 
-const ContactList = (saveToStorage, getFromStorage) => {
+const ContactList = () => {
   const dispatch = useDispatch();
   const contactList = useSelector((state) => state.contacts);
   const filter = useSelector((state) => state.filter);
+
   const onDelete = (id) => {
     dispatch(deleteContact(id));
   };
@@ -22,13 +23,13 @@ const ContactList = (saveToStorage, getFromStorage) => {
       contact.number.includes(filter.trim())
   );
 
-  // useEffect(() => {
-  //   setContactList(getFromStorage("contacts"));
-  // }, [getFromStorage]);
+  useEffect(() => {
+    setContactList(get("contacts"));
+  }, []);
 
-  // useEffect(() => {
-  //   saveToStorage("contacts", contactList);
-  // }, [contactList, saveToStorage]);
+  useEffect(() => {
+    save("contacts", contactList);
+  }, [contactList]);
 
   return (
     <>
@@ -57,23 +58,6 @@ const ContactList = (saveToStorage, getFromStorage) => {
       </TransitionGroup>
     </>
   );
-};
-
-ContactList.propTypes = {
-  contactList: PropTypes.oneOfType([
-    PropTypes.arrayOf(
-      PropTypes.exact({
-        id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        number: PropTypes.string.isRequired,
-      })
-    ),
-    PropTypes.array,
-  ]).isRequired,
-  setContactList: PropTypes.func.isRequired,
-  saveToStorage: PropTypes.func.isRequired,
-  getFromStorage: PropTypes.func.isRequired,
-  query: PropTypes.string,
 };
 
 export default ContactList;
