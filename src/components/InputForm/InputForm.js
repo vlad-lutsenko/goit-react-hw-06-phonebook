@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import styles from "./InputForm.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "../../redux/actions/contactList";
+import { addContact } from "../../redux/withToolkit/actions/contactList";
 
 const InputForm = () => {
   const contacts = useSelector((state) => state.contacts);

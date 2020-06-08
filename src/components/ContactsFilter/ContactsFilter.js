@@ -3,7 +3,7 @@ import { CSSTransition } from "react-transition-group";
 import styles from "./ContactsFilter.module.css";
 import slideIn from "../../utils/transitions/slide.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { setFilter } from "../../redux/actions/filter";
+import { setFilter } from "../../redux/withToolkit/actions/filter";
 
 const ContactsFilter = () => {
   const contactList = useSelector((state) => state.contacts);

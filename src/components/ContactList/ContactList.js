@@ -5,7 +5,10 @@ import slideIn from "../../utils/transitions/slide.module.css";
 import styles from "./ContactList.module.css";
 
 import { useSelector, useDispatch } from "react-redux";
-import { deleteContact, setContactList } from "../../redux/actions/contactList";
+import {
+  deleteContact,
+  setContactList,
+} from "../../redux/withToolkit/actions/contactList";
 import { get, save } from "../../utils/storage";
 
 const ContactList = () => {
